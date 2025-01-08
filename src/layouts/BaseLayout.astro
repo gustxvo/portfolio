@@ -22,7 +22,9 @@ const { title, description } = Astro.props;
 	<body>
 		<div class="stack backgrounds">
 			<Nav />
-			<slot />
+			<div class="content">
+				<slot />
+			</div>
 			<Footer />
 		</div>
 
@@ -92,8 +94,16 @@ const { title, description } = Astro.props;
 				}
 			}
 
+			.content {
+				flex-grow: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 5rem;
+			}
+
 			.backgrounds {
-				min-height: 100%;
+				min-height: 100vh;
 				isolation: isolate;
 				background:
 					/*noise*/
