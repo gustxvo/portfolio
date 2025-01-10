@@ -1,69 +1,119 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import Hero from "../components/Hero.astro";
+import Icon from "../components/Icon.astro";
+
+const birthDate = new Date("2004-01-18");
+const today = new Date();
+let age = today.getFullYear() - birthDate.getFullYear();
+const monthDifference = today.getMonth() - birthDate.getMonth();
+const nextBirthdayInThisYear =
+	monthDifference < 0 ||
+	(monthDifference === 0 && today.getDate() < birthDate.getDate());
+
+if (nextBirthdayInThisYear) {
+	age--;
+}
 ---
 
-<BaseLayout
-	title="About | Jeanine White"
-	description="About Jeanine White Lorem Ipsum"
->
+<BaseLayout title="Sobre | Gustavo Almeida" description="About Gustavo Almeida">
 	<div class="stack gap-20">
 		<main class="wrapper about">
-			<Hero
-				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
-			>
-				<img
-					width="1553"
-					height="873"
-					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
-				/>
-			</Hero>
-
 			<section>
-				<h2 class="section-title">Background</h2>
+				<h2 class="section-title">Sobre mim</h2>
 				<div class="content">
-					<p>
-						Lorem ipsum dolor sit amet, <a
-							href="https://astro.build/">Astro</a
-						> makes people happy. Sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis
-						nunc. Arcu odio ut sem nulla pharetra diam sit amet. Diam
-						quis enim lobortis scelerisque fermentum dui faucibus in
-						ornare.
-					</p>
-					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et
-						egestas. Eget gravida cum sociis natoque penatibus. Cras
-						fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed
-						felis eget velit. Id diam vel quam elementum pulvinar
-						etiam non.
-					</p>
-					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut.
-						Sed enim ut sem viverra aliquet eget sit amet. Lacus
-						luctus accumsan tortor posuere ac ut consequat semper
-						viverra. Viverra accumsan in nisl nisi scelerisque eu
-						ultrices. In massa tempor nec feugiat nisl pretium
-						fusce.
-					</p>
+					<div class="content">
+						<p>
+							Eu me chamo
+							<strong>Gustavo&nbsp;Almeida&nbsp;Carvalho</strong>,
+							tenho {age} anos e moro em São Paulo, SP - Brasil.
+						</p>
+						<p>
+							Comecei minha jornada na carreira de tecnologia na
+							Etec Jorge Street. Desde então, estou constantemente
+							aprimoramento das minhas habilidades técnicas e
+							comportamentais.
+						</p>
+						<p>
+							Durante meu período acadêmico, liderei o
+							desenvolvimento de projetos de ponta a ponta de
+							soluções tecnlógicas em projetos de cunho social e
+							empresarial. Tive contato com diversas tecnologias
+							amplamente utilizadas no desenvolvimento de
+							aplicações frontend, backend e mobile.
+							<a
+								class="cv"
+								href="/cv-gustavo-almeida.pdf"
+								target="_blank"
+							>
+								Download CV
+								<Icon icon="pdf" size="1.2em" />
+							</a>
+						</p>
+					</div>
 				</div>
 			</section>
 			<section>
-				<h2 class="section-title">Education</h2>
+				<h2 class="section-title">Habilidades</h2>
 				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+					<ul>
+						<li>
+							<strong>Linguagens de Programação:</strong>
+							Java, Kotlin, Javascript.
+						</li>
+						<li>
+							<strong>Frameworks:</strong>
+							Spring Boot, Android, Next.js.
+						</li>
+						<li>
+							<strong>Testes:</strong>
+							JUnit, Mockito, Espresso.
+						</li>
+						<li>
+							<strong>CI/CD:</strong>
+							Git, Github, Gradle, Maven, Docker.
+						</li>
+						<li>
+							<strong>Banco de Dados:</strong>
+							PostgreSQL, MySQL, MongoDB.
+						</li>
+						<li>
+							<strong>Boas práticas:</strong>
+							SOLID, Clean Code, MVVM, MVC.
+						</li>
+						<li>
+							<strong>APIs REST:</strong>
+							Desenvolvimento e integração.
+						</li>
+						<li>
+							<strong>Metodologia ágil com Scrum:</strong>
+						</li>
+					</ul>
 				</div>
 			</section>
 			<section>
-				<h2 class="section-title">Skills</h2>
-				<div class="content">
-					<p>officia unde omnis</p>
-				</div>
+				<h2 class="section-title">Formação</h2>
+				<ul class="content">
+					<ul class="content">
+						<li>
+							<h5>2024 - 2025 | Unopar</h5>
+							<p>Pós-Graduação - Arquitetura de Soluções</p>
+						</li>
+						<li>
+							<h5>2022 - 2023 | Fatec Antônio Russo</h5>
+							<p>
+								Tecnólogo - Análise e Desenvolvimento de Sitemas
+							</p>
+						</li>
+						<li>
+							<h5>2019 - 2021 | Etec Jorge Street</h5>
+							<p>
+								Ensino Médio e Técnico - PTECH Análise e
+								Desenvolvimento de Sistemas
+							</p>
+						</li>
+					</ul>
+				</ul>
 			</section>
 		</main>
 	</div>
