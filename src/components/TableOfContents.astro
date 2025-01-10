@@ -1,0 +1,106 @@
+---
+const textLinks: { label: string; href: string }[] = [
+    { label: "Sobre mim", href: "#about-me" },
+    { label: "Habilidades", href: "#skills" },
+    { label: "Formação", href: "#education" },
+];
+---
+
+<nav>
+    <ul class="table-of-contents">
+        {
+            textLinks.map(({ label, href }) => (
+                <li>
+                    <a class="section-link" href={href}>
+                        {label}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
+
+<script type="module">
+    const links = document.querySelectorAll(".section-link");
+    const sections = Array.from(links).map((link) =>
+        document.querySelector(link.getAttribute("href")),
+    );
+
+    const updateActiveLinkOnScroll = () => {
+        let currentSection = null;
+
+        sections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+            if (
+                rect.top <= window.innerHeight / 2 &&
+                rect.bottom >= window.innerHeight / 2
+            ) {
+                currentSection = section;
+            }
+        });
+
+        links.forEach((link) => {
+            const targetSection = document.querySelector(
+                link.getAttribute("href"),
+            );
+            if (targetSection === currentSection) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", updateActiveLinkOnScroll);
+
+    updateActiveLinkOnScroll();
+</script>
+
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    nav {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 2.5rem;
+        padding: 2rem;
+    }
+
+    .table-of-contents {
+        display: flex;
+        flex-direction: column;
+        border-left: 5px dotted;
+        gap: 5rem;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    .section-link {
+        text-decoration: none;
+        color: var(--gray-200);
+        font-size: var(--text-md);
+        padding: 5px 10px;
+        transition: 0.3s;
+    }
+
+    ul li:hover {
+        scale: 1.05;
+        text-decoration: underline;
+    }
+
+    .active {
+        font-weight: bold;
+        color: var(--accent-dark);
+    }
+
+    @media (max-width: 1100px) {
+        .table-of-contents {
+            display: none;
+        }
+    }
+</style>

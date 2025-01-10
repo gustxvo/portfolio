@@ -1,60 +1,62 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+// import portrait from "../assets/portrait.jpg";
+
+import { Image } from "astro:assets";
+import TableOfContents from "../components/TableOfContents.astro";
 import Icon from "../components/Icon.astro";
 
 const birthDate = new Date("2004-01-18");
-const today = new Date();
-let age = today.getFullYear() - birthDate.getFullYear();
-const monthDifference = today.getMonth() - birthDate.getMonth();
-const nextBirthdayInThisYear =
-	monthDifference < 0 ||
-	(monthDifference === 0 && today.getDate() < birthDate.getDate());
-
-if (nextBirthdayInThisYear) {
-	age--;
-}
+const ageDate = new Date(Date.now() - birthDate.getTime());
+const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 ---
 
 <BaseLayout title="Sobre | Gustavo Almeida" description="About Gustavo Almeida">
 	<div class="stack gap-20">
+		<TableOfContents />
 		<main class="wrapper about">
-			<section>
-				<h2 class="section-title">Sobre mim</h2>
+			<section id="about-me">
+				<h2>Sobre mim</h2>
+				<!-- <Image
+					alt="Foto de Gustavo Almeida "
+					width="360"
+					height="480"
+					src={portrait}
+				/> -->
 				<div class="content">
-					<div class="content">
-						<p>
-							Eu me chamo
-							<strong>Gustavo&nbsp;Almeida&nbsp;Carvalho</strong>,
-							tenho {age} anos e moro em São Paulo, SP - Brasil.
-						</p>
-						<p>
-							Comecei minha jornada na carreira de tecnologia na
-							Etec Jorge Street. Desde então, estou constantemente
-							aprimoramento das minhas habilidades técnicas e
-							comportamentais.
-						</p>
-						<p>
-							Durante meu período acadêmico, liderei o
-							desenvolvimento de projetos de ponta a ponta de
-							soluções tecnlógicas em projetos de cunho social e
-							empresarial. Tive contato com diversas tecnologias
-							amplamente utilizadas no desenvolvimento de
-							aplicações frontend, backend e mobile.
-							<a
-								class="cv"
-								href="/cv-gustavo-almeida.pdf"
-								target="_blank"
-							>
-								Download CV
-								<Icon icon="pdf" size="1.2em" />
-							</a>
-						</p>
-					</div>
+					<p>
+						Eu me chamo
+						<strong>Gustavo&nbsp;Almeida&nbsp;Carvalho</strong>,
+						tenho {age} anos e moro em São Paulo - SP, Brasil.
+					</p>
+					<p>
+						Comecei minha jornada na carreira de tecnologia na Etec
+						Jorge Street. Desde então, estou constantemente
+						aprimoramento das minhas habilidades técnicas e
+						comportamentais.
+					</p>
+					<p>
+						Durante meu período acadêmico, liderei o desenvolvimento
+						de projetos de ponta a ponta de soluções tecnlógicas em
+						projetos de cunho social e empresarial. Tive contato com
+						diversas tecnologias amplamente utilizadas no
+						desenvolvimento de aplicações frontend, backend e
+						mobile.
+						<a
+							class="cv"
+							href="/cv-gustavo-almeida.pdf"
+							target="_blank"
+						>
+							Download CV
+							<Icon icon="pdf" size="1.2em" />
+						</a>
+					</p>
 				</div>
 			</section>
-			<section>
-				<h2 class="section-title">Habilidades</h2>
+
+			<section id="skills">
+				<h2>Habilidades</h2>
 				<div class="content">
 					<ul>
 						<li>
@@ -91,88 +93,102 @@ if (nextBirthdayInThisYear) {
 					</ul>
 				</div>
 			</section>
-			<section>
-				<h2 class="section-title">Formação</h2>
+			<section id="education">
+				<h2>Formação</h2>
 				<ul class="content">
-					<ul class="content">
-						<li>
-							<h5>2024 - 2025 | Unopar</h5>
-							<p>Pós-Graduação - Arquitetura de Soluções</p>
-						</li>
-						<li>
-							<h5>2022 - 2023 | Fatec Antônio Russo</h5>
-							<p>
-								Tecnólogo - Análise e Desenvolvimento de Sitemas
-							</p>
-						</li>
-						<li>
-							<h5>2019 - 2021 | Etec Jorge Street</h5>
-							<p>
-								Ensino Médio e Técnico - PTECH Análise e
-								Desenvolvimento de Sistemas
-							</p>
-						</li>
-					</ul>
+					<li>
+						<h5>2024 - 2025 | Unopar</h5>
+						<p>Pós-Graduação - Arquitetura de Soluções</p>
+					</li>
+					<li>
+						<h5>2022 - 2023 | Fatec Antônio Russo</h5>
+						<p>Tecnólogo - Análise e Desenvolvimento de Sitemas</p>
+					</li>
+					<li>
+						<h5>2019 - 2021 | Etec Jorge Street</h5>
+						<p>
+							Ensino Médio e Técnico - PTECH Análise e
+							Desenvolvimento de Sistemas
+						</p>
+					</li>
 				</ul>
 			</section>
 		</main>
 	</div>
-</BaseLayout>
 
-<style>
-	.about {
-		display: flex;
-		flex-direction: column;
-		gap: 3.5rem;
-	}
-
-	img {
-		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-	}
-
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		color: var(--gray-200);
-	}
-
-	.section-title {
-		grid-column-start: 1;
-		font-size: var(--text-xl);
-		color: var(--gray-0);
-	}
-
-	.content {
-		grid-column: 2 / 4;
-	}
-
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
-	}
-
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
-	}
-
-	@media (min-width: 50em) {
+	<style>
 		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
+			display: flex;
+			flex-direction: column;
 		}
 
-		.about > :global(:first-child) {
-			grid-column-start: 2;
+		img {
+			aspect-ratio: 3 / 4;
+			object-fit: cover;
+			object-position: top;
+			border-radius: 1.5rem;
+			box-shadow: var(--shadow-md);
 		}
 
 		section {
-			display: contents;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			min-height: 50vh;
+			font-size: var(--text-md);
+			color: var(--gray-200);
+		}
+
+		.section h2 {
+			margin-bottom: 2rem;
 			font-size: var(--text-lg);
 		}
-	}
-</style>
+
+		section img {
+			margin: 2rem 0;
+		}
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			margin: 2rem 0;
+			gap: 1rem;
+		}
+
+		.cv {
+			margin-top: 2rem;
+			width: fit-content;
+			display: flex;
+			padding: 0.75rem 1em;
+			gap: 0.75rem;
+			color: var(--accent-text-over);
+			text-decoration: none;
+			line-height: 1.1;
+			border-radius: 999rem;
+			background-color: var(--accent-regular);
+			font-weight: 400;
+		}
+
+		.cv:hover {
+			background-color: var(--accent-light);
+			color: var(--gray-50);
+		}
+
+		@media (min-width: 1100px) {
+			section {
+				display: block;
+				margin-left: 200px;
+			}
+
+			.content {
+				max-width: 70rem;
+				font-size: var(--text-lg);
+			}
+
+			section img {
+				margin-left: 1rem;
+				float: inline-end;
+			}
+		}
+	</style>
+</BaseLayout>
