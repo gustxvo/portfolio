@@ -1,60 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// import portrait from "../assets/portrait.jpg";
-
-import { Image } from "astro:assets";
 import TableOfContents from "../components/TableOfContents.astro";
-import Icon from "../components/Icon.astro";
-
-const birthDate = new Date("2004-01-18");
-const ageDate = new Date(Date.now() - birthDate.getTime());
-const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+import AboutMe from "../components/AboutMe.astro";
 ---
 
 <BaseLayout title="Sobre | Gustavo Almeida" description="About Gustavo Almeida">
 	<div class="stack gap-20">
 		<TableOfContents />
 		<main class="wrapper about">
-			<section id="about-me">
-				<h2>Sobre mim</h2>
-				<!-- <Image
-					alt="Foto de Gustavo Almeida "
-					width="360"
-					height="480"
-					src={portrait}
-				/> -->
-				<div class="content">
-					<p>
-						Eu me chamo
-						<strong>Gustavo&nbsp;Almeida&nbsp;Carvalho</strong>,
-						tenho {age} anos e moro em São Paulo - SP, Brasil.
-					</p>
-					<p>
-						Comecei minha jornada na carreira de tecnologia na Etec
-						Jorge Street. Desde então, estou constantemente
-						aprimoramento das minhas habilidades técnicas e
-						comportamentais.
-					</p>
-					<p>
-						Durante meu período acadêmico, liderei o desenvolvimento
-						de projetos de ponta a ponta de soluções tecnlógicas em
-						projetos de cunho social e empresarial. Tive contato com
-						diversas tecnologias amplamente utilizadas no
-						desenvolvimento de aplicações frontend, backend e
-						mobile.
-						<a
-							class="cv"
-							href="/cv-gustavo-almeida.pdf"
-							target="_blank"
-						>
-							Download CV
-							<Icon icon="pdf" size="1.2em" />
-						</a>
-					</p>
-				</div>
-			</section>
-
+			<AboutMe />
 			<section id="skills">
 				<h2>Habilidades</h2>
 				<div class="content">
@@ -120,32 +75,16 @@ const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 		.about {
 			display: flex;
 			flex-direction: column;
-		}
-
-		img {
-			aspect-ratio: 3 / 4;
-			object-fit: cover;
-			object-position: top;
-			border-radius: 1.5rem;
-			box-shadow: var(--shadow-md);
+			gap: 4rem;
 		}
 
 		section {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
+			gap: 1.5rem;
 			min-height: 50vh;
 			font-size: var(--text-md);
 			color: var(--gray-200);
-		}
-
-		.section h2 {
-			margin-bottom: 2rem;
-			font-size: var(--text-lg);
-		}
-
-		section img {
-			margin: 2rem 0;
 		}
 
 		.content {
@@ -155,26 +94,7 @@ const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 			gap: 1rem;
 		}
 
-		.cv {
-			margin-top: 2rem;
-			width: fit-content;
-			display: flex;
-			padding: 0.75rem 1em;
-			gap: 0.75rem;
-			color: var(--accent-text-over);
-			text-decoration: none;
-			line-height: 1.1;
-			border-radius: 999rem;
-			background-color: var(--accent-regular);
-			font-weight: 400;
-		}
-
-		.cv:hover {
-			background-color: var(--accent-light);
-			color: var(--gray-50);
-		}
-
-		@media (min-width: 1100px) {
+		@media (min-width: 1200px) {
 			section {
 				display: block;
 				margin-left: 200px;
@@ -183,11 +103,6 @@ const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 			.content {
 				max-width: 70rem;
 				font-size: var(--text-lg);
-			}
-
-			section img {
-				margin-left: 1rem;
-				float: inline-end;
 			}
 		}
 	</style>
