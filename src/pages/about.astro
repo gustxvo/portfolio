@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 import TableOfContents from "../components/TableOfContents.astro";
 import AboutMe from "../components/AboutMe.astro";
+import AboutSection from "../layouts/AboutSection.astro";
 ---
 
 <BaseLayout title="Sobre | Gustavo Almeida" description="About Gustavo Almeida">
@@ -10,46 +11,44 @@ import AboutMe from "../components/AboutMe.astro";
 		<TableOfContents />
 		<main class="wrapper about">
 			<AboutMe />
-			<section id="skills">
-				<h2>Habilidades</h2>
-				<div class="content">
-					<ul>
-						<li>
-							<strong>Linguagens de Programação:</strong>
-							Java, Kotlin, Javascript.
-						</li>
-						<li>
-							<strong>Frameworks:</strong>
-							Spring Boot, Android, Next.js.
-						</li>
-						<li>
-							<strong>Testes:</strong>
-							JUnit, Mockito, Espresso.
-						</li>
-						<li>
-							<strong>CI/CD:</strong>
-							Git, Github, Gradle, Maven, Docker.
-						</li>
-						<li>
-							<strong>Banco de Dados:</strong>
-							PostgreSQL, MySQL, MongoDB.
-						</li>
-						<li>
-							<strong>Boas práticas:</strong>
-							SOLID, Clean Code, MVVM, MVC.
-						</li>
-						<li>
-							<strong>APIs REST:</strong>
-							Desenvolvimento e integração.
-						</li>
-						<li>
-							<strong>Metodologia ágil com Scrum:</strong>
-						</li>
-					</ul>
-				</div>
-			</section>
-			<section id="education">
-				<h2>Formação</h2>
+
+			<AboutSection id="skills" title="Habilidades">
+				<ul class="content">
+					<li>
+						<strong>Linguagens de Programação:</strong>
+						Java, Kotlin, Javascript.
+					</li>
+					<li>
+						<strong>Frameworks:</strong>
+						Spring Boot, Android, Next.js.
+					</li>
+					<li>
+						<strong>Testes:</strong>
+						JUnit, Mockito, Espresso.
+					</li>
+					<li>
+						<strong>CI/CD:</strong>
+						Git, Github, Gradle, Maven, Docker.
+					</li>
+					<li>
+						<strong>Banco de Dados:</strong>
+						PostgreSQL, MySQL, MongoDB.
+					</li>
+					<li>
+						<strong>Boas práticas:</strong>
+						SOLID, Clean Code, MVVM, MVC.
+					</li>
+					<li>
+						<strong>APIs REST:</strong>
+						Desenvolvimento e integração.
+					</li>
+					<li>
+						<strong>Metodologia ágil com Scrum</strong>
+					</li>
+				</ul>
+			</AboutSection>
+
+			<AboutSection id="education" title="Formação">
 				<ul class="content">
 					<li>
 						<h5>2024 - 2025 | Unopar</h5>
@@ -67,40 +66,25 @@ import AboutMe from "../components/AboutMe.astro";
 						</p>
 					</li>
 				</ul>
-			</section>
+			</AboutSection>
 		</main>
 	</div>
-
 	<style>
 		.about {
 			display: flex;
 			flex-direction: column;
-			gap: 4rem;
-		}
-
-		section {
-			display: flex;
-			flex-direction: column;
-			gap: 1.5rem;
-			min-height: 50vh;
-			font-size: var(--text-md);
-			color: var(--gray-200);
 		}
 
 		.content {
 			display: flex;
 			flex-direction: column;
-			margin: 2rem 0;
+			justify-content: center;
 			gap: 1rem;
 		}
 
 		@media (min-width: 1200px) {
-			section {
-				display: block;
-				margin-left: 200px;
-			}
-
 			.content {
+				flex-grow: 1;
 				max-width: 70rem;
 				font-size: var(--text-lg);
 			}

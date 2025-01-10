@@ -1,0 +1,30 @@
+---
+const { id, title } = Astro.props;
+---
+
+<section id={id}>
+    <h2>{title}</h2>
+    <slot />
+</section>
+
+<style>
+    section {
+        padding: 2.5rem 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 50vh;
+        font-size: var(--text-md);
+        color: var(--gray-200);
+        gap: 2rem;
+        margin-left: 200px;
+    }
+
+    @media (max-width: 1200px) {
+        section {
+            margin-left: 0;
+        }
+        section h2 {
+            font-size: var(--text-3xl);
+        }
+    }
+</style>
