@@ -4,10 +4,10 @@
 import { Image } from "astro:assets";
 import Icon from "../components/Icon.astro";
 import AboutSection from "../layouts/AboutSection.astro";
+import dayjs from "dayjs";
 
-const birthDate = new Date("2004-01-18");
-const ageDate = new Date(Date.now() - birthDate.getTime());
-const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+const birthDate = new Date("2004-01-12");
+const age = dayjs().diff(birthDate, "year");
 ---
 
 <AboutSection id="about-me" title="Sobre mim">
