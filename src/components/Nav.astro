@@ -25,12 +25,9 @@ const iconLinks: {
 		href: "https://linkedin.com/in/gustavo-almeida-carvalho",
 		icon: "linkedin-logo",
 	},
-	{
-		label: "Email",
-		href: "mailto:gualmeida2004@gmail.com",
-		icon: "email",
-	},
 ];
+
+const emailRef = "mailto:gualmeida2004@gmail.com";
 
 /** Test if a link is pointing to the current page. */
 const isCurrentPage = (href: string) => {
@@ -112,11 +109,19 @@ const isCurrentPage = (href: string) => {
 			<div class="socials">
 				{
 					iconLinks.map(({ href, icon, label }) => (
-						<a href={href} class="social">
+						<a href={href} class="social" target="_blank">
 							<span class="sr-only">{label}</span>
 							<Icon icon={icon} />
 						</a>
 					))
+				}
+				{
+					(
+						<a href={emailRef} class="social">
+							<span class="sr-only">email</span>
+							<Icon icon="email" />
+						</a>
+					)
 				}
 			</div>
 
