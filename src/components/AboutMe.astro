@@ -1,23 +1,21 @@
 ---
-// import portrait from "../assets/portrait.jpg";
-
 import { Image } from "astro:assets";
 import Icon from "../components/Icon.astro";
 import AboutSection from "../layouts/AboutSection.astro";
 import dayjs from "dayjs";
 
-const birthDate = new Date("2004-01-12");
+const birthDate = new Date("2004-01-18");
 const age = dayjs().diff(birthDate, "year");
 ---
 
 <AboutSection id="about-me" title="Sobre mim">
     <div class="container">
-        <!-- <Image
+        <Image
             alt="Foto de Gustavo Almeida "
             width="360"
             height="480"
-            src={portrait}
-        /> -->
+            src="/assets/portrait.webp"
+        />
         <div class="content">
             <p>
                 Eu me chamo
@@ -75,6 +73,7 @@ const age = dayjs().diff(birthDate, "year");
         margin-top: auto;
         padding-top: 2rem;
         display: flex;
+        color: var(--text-over);
         flex-direction: column;
         gap: 0.5rem;
     }

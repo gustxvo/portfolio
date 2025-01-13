@@ -11,6 +11,7 @@ import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 import Skills from "../components/Skills.astro";
+import { Image } from "astro:assets";
 
 const projects = (await getCollection("work"))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
@@ -46,12 +47,12 @@ const projects = (await getCollection("work"))
 					</div>
 				</Hero>
 
-				<!-- <img 
-					alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
+				<Image
+					alt="Foto de perfil de Gustavo Almeida"
 					width="480"
 					height="620"
-					src="/assets/portrait.jpg"
-				/> -->
+					src="/assets/portrait.webp"
+				/>
 			</header>
 
 			<Skills />
