@@ -1,7 +1,7 @@
 ---
 title: 🖌️ Minharte
 publishDate: 2021-12-01 00:00:00
-img: /assets/minharte.jpg
+img: /assets/minharte.png
 img_alt: Minharte
 description: |
   App para a divulgação de artistas
