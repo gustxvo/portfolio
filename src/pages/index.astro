@@ -109,7 +109,12 @@ const projects = (await getCollection("work"))
 	}
 
 	@media (min-width: 50em) {
+		.wrapper {
+			align-items: center;
+		}
+
 		.hero {
+			max-width: 90rem;
 			display: grid;
 			grid-template-columns: 6fr 4fr;
 			gap: 2rem;
